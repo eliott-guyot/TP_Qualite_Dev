@@ -125,6 +125,10 @@ Si `curl` n'est pas trouvé, exécutez :
 apt update
 apt install -y curl
 ```
+
+Même chose pour les autres éventuels paquets (zip, unzip, etc)
+
+Pensez à les ajouter dans une étape RUN initiale du Dockerfile pour lorsque vous reconstruirez l'image.
 :::
 
 5. Lister les versions disponibles de Java :
