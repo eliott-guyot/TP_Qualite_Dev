@@ -729,7 +729,12 @@ Remplacer `<nom-du-sous-module>` par le nom du package défini dans le `package.
   - Vérifiez que vous n'avez pas de conteneurs ou d'images orphelines.
   - Nettoyez les volumes Docker inutilisés.
   - Augmentez l'espace disque alloué à Docker si nécessaire et si possible :
-    - Allouez l'espace sur la partition contenant les données Docker (généralement dans /var)
+    - Allouez l'espace sur la partition contenant les données Docker (généralement dans /var) :
+      0. Effectuer un backup de vos données avec votre Hyperviseur (Proxmox)
+      1. df -h : repérer le chemin vers le `volume group` monté sur `/`
+      2. `pvdisplay`, puis `lvdisplay` pour repérer une différence : `pv` doit afficher une plus grande taille que `lv`
+      3. `lvextend -l +100%FREE /dev/mapper/<votre_vg>` : allouer tout l'espace libre au `volume group`
+      4. `resize2fs /dev/mapper/<votre_vg>` : redimensionner le système de fichiers pour utiliser l'espace alloué  
 - Je perd l'interaction avec mon terminal distant/mon vscode distant :
   - Vérifiez la connexion réseau entre votre hôte local et votre serveur distant.
   - Vérifiez que le démon Docker sur le serveur distant est bien en cours d'exécution.
