@@ -113,3 +113,11 @@ TODO
   - [@thibaud.faurie (Private GitLab)](https://gitlab.cloud0.openrichmedia.org/thibaud.faurie)
   - [@thibaud-faurie (LinkedIn)](https://www.linkedin.com/in/thibaud-faurie/)
 
+
+## Commande pour le lancement
+```bash
+gradle :apps:product-registry-domain-service:quarkusDev
+gradle :apps:product-registry-read-service:quarkusDev
+gradle :apps:store-back:quarkusDev
+pnpm run --filter apps-store-front start
+```

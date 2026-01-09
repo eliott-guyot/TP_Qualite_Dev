@@ -16,9 +16,16 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
+
 /**
- * TODO: Complete Javadoc
+ * Service d'application chargé de mettre à jour les informations d'un produit dans le registre.
+ * <p>
+ * Ce service permet de modifier le nom ou la description d'un produit existant.
+ * Pour chaque mise à jour, il récupère le produit par son identifiant, applique la modification,
+ * sauvegarde les changements dans le dépôt, enregistre l'événement correspondant dans le journal
+ * des événements et publie l'événement dans l'outbox pour la communication avec d'autres systèmes.
  */
+
 
 @ApplicationScoped
 public class UpdateProductService {

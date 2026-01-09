@@ -13,6 +13,8 @@ import org.ormi.priv.tfa.orderflow.productregistry.read.infra.web.dto.ProductSum
 import org.ormi.priv.tfa.orderflow.productregistry.read.infra.web.dto.ProductViewDtoMapper;
 
 import jakarta.inject.Inject;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -22,9 +24,8 @@ import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
 /**
- * TODO: Complete Javadoc
+ * Ressource REST pour la consultation du registre des produits.
  */
-
 @Path("/products")
 @Produces(MediaType.APPLICATION_JSON)
 public class ProductRegistryQueryResource {
@@ -49,9 +50,9 @@ public class ProductRegistryQueryResource {
     @GET
     public RestResponse<PaginatedProductListDto> searchProducts(
             @QueryParam("sku") @DefaultValue("") String sku,
-            @QueryParam("page") int page,
-            @QueryParam("size") int size) {
-        // TODO: Validation [Exercice 5]
+            @QueryParam("page") @DefaultValue("0") @Min(0) int page,
+            @QueryParam("size") @DefaultValue("10") @Min(1) int size) {
+        
         final SearchPaginatedResult result = readProductService.searchProducts(sku, page, size);
         final PaginatedProductListDto list = new PaginatedProductListDto(result.page().stream()
                 .map(view -> ProductSummary.Builder()
@@ -68,12 +69,17 @@ public class ProductRegistryQueryResource {
 
     @GET
     @Path("/{id}")
-    public RestResponse<ProductViewDto> getProductById(@PathParam("id") String id) {
-        // TODO: Validation [Exercice 5]
-        final var product = readProductService.findById(productIdMapper.map(UUID.fromString(id)));
-        if (product.isEmpty()) {
-            return RestResponse.status(RestResponse.Status.NOT_FOUND);
+    public RestResponse<ProductViewDto> getProductById(@PathParam("id") @NotBlank String id) {
+        try {
+            // Validation basique de l'UUID lors du parsing
+            UUID uuid = UUID.fromString(id);
+            final var product = readProductService.findById(productIdMapper.map(uuid));
+            if (product.isEmpty()) {
+                return RestResponse.status(RestResponse.Status.NOT_FOUND);
+            }
+            return RestResponse.ok(productViewDtoMapper.toDto(product.get()));
+        } catch (IllegalArgumentException e) {
+            return RestResponse.status(RestResponse.Status.BAD_REQUEST);
         }
-        return RestResponse.ok(productViewDtoMapper.toDto(product.get()));
     }
 }

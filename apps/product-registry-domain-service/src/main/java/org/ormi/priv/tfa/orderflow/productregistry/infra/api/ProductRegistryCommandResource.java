@@ -29,8 +29,21 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.UriInfo;
 
 /**
- * TODO: Complete Javadoc
+ * Ressource REST exposant les opérations de commande pour le registre de produits.
+ * <p>
+ * Cette ressource permet de :
+ * <ul>
+ *   <li>Enregistrer un nouveau produit</li>
+ *   <li>Mettre un produit hors service (retirer un produit)</li>
+ *   <li>Mettre à jour le nom d'un produit</li>
+ *   <li>Mettre à jour la description d'un produit</li>
+ * </ul>
+ * <p>
+ * Chaque méthode transforme les DTO reçus en commandes applicatives et délègue
+ * leur traitement aux services correspondants. Les réponses HTTP sont adaptées
+ * aux conventions REST (201 Created pour l'enregistrement, 204 No Content pour les mises à jour ou suppressions).
  */
+
 
 @Path("/products")
 @Produces(MediaType.APPLICATION_JSON)

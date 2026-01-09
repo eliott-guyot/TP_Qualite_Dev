@@ -17,7 +17,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * TODO: Complete Javadoc
+ * Entité JPA représentant un produit dans la base de données.
+ * <p>
+ * Cette entité est mappée à la table "domain.products" et contient toutes les informations
+ * persistées d'un produit, y compris son identifiant, son nom, sa description, son SKU,
+ * son état de cycle de vie ({@link ProductLifecycle}) et sa version.
+ * <p>
+ * Un index unique est défini sur le SKU pour garantir l'unicité des produits.
  */
 
 @Getter

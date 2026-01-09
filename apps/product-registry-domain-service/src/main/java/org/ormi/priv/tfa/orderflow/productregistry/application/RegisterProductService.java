@@ -16,7 +16,11 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application chargé de l'enregistrement d'un nouveau produit dans le registre.
+ * <p>
+ * Ce service vérifie si le SKU existe déjà, crée le produit, le sauvegarde dans le dépôt,
+ * enregistre l'événement correspondant dans le journal des événements et publie l'événement
+ * dans la table d'outbox pour la communication avec d'autres systèmes.
  */
 
 @ApplicationScoped

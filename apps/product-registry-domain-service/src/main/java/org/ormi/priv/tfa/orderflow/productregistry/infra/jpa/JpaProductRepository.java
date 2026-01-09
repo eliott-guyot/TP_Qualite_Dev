@@ -16,7 +16,13 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Implémentation JPA du dépôt de produits.
+ * <p>
+ * Ce dépôt permet de sauvegarder, rechercher et vérifier l'existence de produits
+ * dans la base de données à l'aide de Panache (Quarkus).
+ * <p>
+ * Il convertit les objets domaine {@link Product} en entités JPA {@link ProductEntity}
+ * et inversement à l'aide des mappers injectés.
  */
 
 @ApplicationScoped

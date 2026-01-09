@@ -5,8 +5,14 @@ import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
 /**
- * TODO: Complete Javadoc
+ * Point d'entrée principal de l'application du domaine du registre de produits.
+ * <p>
+ * Cette classe initialise et démarre Quarkus pour exécuter l'application,
+ * en attendant que le processus soit arrêté. Elle définit également la classe interne
+ * {@link ProductRegistryDomainApplication} qui implémente {@link QuarkusApplication}
+ * et contient la logique principale d'exécution.
  */
+
 
 @QuarkusMain
 public class Main {

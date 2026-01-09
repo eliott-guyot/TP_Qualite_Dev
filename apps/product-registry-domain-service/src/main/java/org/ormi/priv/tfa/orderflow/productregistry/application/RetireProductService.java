@@ -15,8 +15,13 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Service d'application chargé de mettre un produit hors service (retirer un produit) dans le registre.
+ * <p>
+ * Ce service récupère le produit par son identifiant, marque le produit comme retiré,
+ * sauvegarde les modifications dans le dépôt, enregistre l'événement correspondant dans le journal
+ * des événements et publie l'événement dans l'outbox pour la communication avec d'autres systèmes.
  */
+
 @ApplicationScoped
 public class RetireProductService {
 
