@@ -3,7 +3,7 @@ package org.ormi.priv.tfa.orderflow.productregistry.read.infra.api;
 import jakarta.ws.rs.Path;
 
 /**
- * TODO: Complete Javadoc
+ * Ressource REST pour diffuser les changements d'état des produits en temps réel (SSE).
  */
 
 @Path("/products")

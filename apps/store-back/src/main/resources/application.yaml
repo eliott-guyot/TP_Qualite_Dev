@@ -7,7 +7,14 @@ quarkus:
   log:
     level: ${LOG_LEVEL:INFO}
     console:
+      enable: true
+      format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n"
       level: ${LOG_LEVEL:DEBUG}
+    file:
+      enable: true
+      path: "logs/store-back.log"
+      json: true
+      level: ${LOG_LEVEL:INFO}
     category:
       "org.ormi.priv.tfa.orderflow.store":
         level: ${LOG_LEVEL:DEBUG}

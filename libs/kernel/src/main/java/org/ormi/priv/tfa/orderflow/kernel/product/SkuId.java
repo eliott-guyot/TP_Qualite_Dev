@@ -3,7 +3,7 @@ package org.ormi.priv.tfa.orderflow.kernel.product;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * TODO: Complete Javadoc
+ * Value Object représentant le SKU (Stock Keeping Unit) d'un produit. Assure la validation du format (XXX-00000).
  */
 
 public record SkuId(@NotNull String value) {

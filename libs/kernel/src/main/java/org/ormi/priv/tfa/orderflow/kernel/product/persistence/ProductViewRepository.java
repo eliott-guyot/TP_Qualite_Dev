@@ -8,7 +8,7 @@ import org.ormi.priv.tfa.orderflow.kernel.product.SkuId;
 import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView;
 
 /**
- * TODO: Complete Javadoc
+ * Repository pour la lecture et la recherche des vues de produits (Read Model). Offre des fonctionnalités de recherche paginée.
  */
 
 public interface ProductViewRepository {

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * TODO: Complete Javadoc
+ * Mapper MapStruct pour convertir les entités JPA `ProductView` en objets de domaine et vice-versa.
  */
 
 @Mapper(

@@ -28,7 +28,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response.Status;
 
 /**
- * TODO: Complete Javadoc
+ * Ressource RPC pour la gestion des produits. Expose des endpoints pour interagir via des appels de procédure distante.
  */
 
 @Path("/products")

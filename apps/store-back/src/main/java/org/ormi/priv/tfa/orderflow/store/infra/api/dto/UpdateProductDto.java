@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
- * TODO: Complete Javadoc
+ * DTO représentant une requête de mise à jour de produit. Contient l'identifiant du produit et une liste d'opérations à effectuer.
  */
 
 public record UpdateProductDto(String id, UpdateOperation[] operations) {

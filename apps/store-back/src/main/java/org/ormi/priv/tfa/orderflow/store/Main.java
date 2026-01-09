@@ -5,7 +5,7 @@ import io.quarkus.runtime.QuarkusApplication;
 import io.quarkus.runtime.annotations.QuarkusMain;
 
 /**
- * TODO: Complete Javadoc
+ * Point d'entrée principal pour l'application Store Back.
  */
 
 @QuarkusMain

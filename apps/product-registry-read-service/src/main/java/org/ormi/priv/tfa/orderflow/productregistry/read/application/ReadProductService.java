@@ -34,10 +34,22 @@ public class ReadProductService {
         return repository.findById(productId);
     }
 
+    public Optional<ProductView> handle(ProductQuery.GetProductByIdQuery query) {
+        return findById(query.productId());
+    }
+
     public SearchPaginatedResult searchProducts(String skuIdPattern, int page, int size) {
         return new SearchPaginatedResult(
                 repository.searchPaginatedViewsOrderBySkuId(skuIdPattern, page, size),
                 repository.countPaginatedViewsBySkuIdPattern(skuIdPattern));
+    }
+
+    public SearchPaginatedResult handle(ProductQuery.ListProductQuery query) {
+        return searchProducts("", query.page(), query.size());
+    }
+
+    public SearchPaginatedResult handle(ProductQuery.ListProductBySkuIdPatternQuery query) {
+        return searchProducts(query.skuIdPattern(), query.page(), query.size());
     }
 
     public Multi<ProductStreamElementDto> streamProductEvents(ProductId productId) {

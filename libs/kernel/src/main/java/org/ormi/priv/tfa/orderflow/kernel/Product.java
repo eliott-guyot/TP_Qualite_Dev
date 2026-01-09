@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 
 /**
- * TODO: Complete Javadoc
+ * Agrégat Produit (Aggregate Root). Représente le coeur du modèle de domaine produit, encapsulant l'état et les comportements métier liés aux produits.
  */
 
 @Getter

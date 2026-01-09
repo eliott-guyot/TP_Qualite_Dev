@@ -6,10 +6,19 @@ quarkus:
         port: ${HTTP_PORT:8091}
     rest:
         path: /api
-    log:
+        log:
         level: ${LOG_LEVEL:INFO}
         console:
+            enabled: true 
+            format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n"
             level: ${LOG_LEVEL:DEBUG}
+        file:
+            enabled: true
+            path: "logs/product-registry-read-service.log"
+            format: "%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c{3.}] (%t) %s%e%n" 
+            json: true 
+            level: ${LOG_LEVEL:INFO}
+
         category:
             "org.ormi.priv.tfa.orderflow.productregistry":
                 level: ${LOG_LEVEL:DEBUG}

@@ -28,7 +28,7 @@ import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView.ProductViewC
 import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductView.ProductViewEvent;
 
 /**
- * TODO: Complete Javadoc
+ * Mapper MapStruct pour convertir les objets de vue `ProductView` en DTOs exposés par l'API Web.
  */
 
 @Mapper(componentModel = "cdi", builder = @Builder(disableBuilder = false), uses = {

@@ -7,6 +7,7 @@ import org.ormi.priv.tfa.orderflow.contracts.productregistry.v1.read.PaginatedPr
 import org.ormi.priv.tfa.orderflow.contracts.productregistry.v1.read.ProductViewDto;
 import org.ormi.priv.tfa.orderflow.kernel.product.ProductIdMapper;
 import org.ormi.priv.tfa.orderflow.kernel.product.views.ProductSummary;
+import org.ormi.priv.tfa.orderflow.productregistry.read.application.ProductQuery;
 import org.ormi.priv.tfa.orderflow.productregistry.read.application.ReadProductService;
 import org.ormi.priv.tfa.orderflow.productregistry.read.application.ReadProductService.SearchPaginatedResult;
 import org.ormi.priv.tfa.orderflow.productregistry.read.infra.web.dto.ProductSummaryDtoMapper;
@@ -53,7 +54,13 @@ public class ProductRegistryQueryResource {
             @QueryParam("page") @DefaultValue("0") @Min(0) int page,
             @QueryParam("size") @DefaultValue("10") @Min(1) int size) {
         
-        final SearchPaginatedResult result = readProductService.searchProducts(sku, page, size);
+        final SearchPaginatedResult result;
+        if (sku == null || sku.isBlank()) {
+            result = readProductService.handle(new ProductQuery.ListProductQuery(page, size));
+        } else {
+            result = readProductService.handle(new ProductQuery.ListProductBySkuIdPatternQuery(sku, page, size));
+        }
+        
         final PaginatedProductListDto list = new PaginatedProductListDto(result.page().stream()
                 .map(view -> ProductSummary.Builder()
                         .id(view.getId())
@@ -73,7 +80,7 @@ public class ProductRegistryQueryResource {
         try {
             // Validation basique de l'UUID lors du parsing
             UUID uuid = UUID.fromString(id);
-            final var product = readProductService.findById(productIdMapper.map(uuid));
+            final var product = readProductService.handle(new ProductQuery.GetProductByIdQuery(productIdMapper.map(uuid)));
             if (product.isEmpty()) {
                 return RestResponse.status(RestResponse.Status.NOT_FOUND);
             }

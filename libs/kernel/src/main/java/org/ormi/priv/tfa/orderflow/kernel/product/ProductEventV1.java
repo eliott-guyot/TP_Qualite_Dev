@@ -6,7 +6,7 @@ import org.ormi.priv.tfa.orderflow.cqrs.DomainEvent;
 import org.ormi.priv.tfa.orderflow.kernel.Product;
 
 /**
- * TODO: Complete Javadoc
+ * Version 1 des événements de domaine pour l'agrégat Produit. Définit les différentes variations d'événements supportées (Création, Mise à jour, etc.).
  */
 
 public sealed interface ProductEventV1 extends DomainEvent {

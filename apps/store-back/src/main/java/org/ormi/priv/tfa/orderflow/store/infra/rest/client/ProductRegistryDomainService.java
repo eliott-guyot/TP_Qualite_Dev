@@ -14,7 +14,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 
 /**
- * TODO: Complete Javadoc
+ * Client REST pour interagir avec le service de domaine Product Registry. Permet d'enregistrer, retirer et mettre à jour des produits.
  */
 
 @ApplicationScoped

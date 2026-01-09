@@ -77,7 +77,7 @@ public class ProductRegistryCommandResource {
     @DELETE
     @Path("/{id}")
     public RestResponse<Void> retireProduct(@PathParam("id") String productId) {
-        retireProductService.retire(new RetireProductCommand(new ProductId(UUID.fromString(productId))));
+        retireProductService.handle(new RetireProductCommand(new ProductId(UUID.fromString(productId))));
         return RestResponse.noContent();
     }
 

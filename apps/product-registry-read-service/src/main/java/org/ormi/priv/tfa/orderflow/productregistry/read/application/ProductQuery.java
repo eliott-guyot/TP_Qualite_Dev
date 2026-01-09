@@ -3,7 +3,7 @@ package org.ormi.priv.tfa.orderflow.productregistry.read.application;
 import org.ormi.priv.tfa.orderflow.kernel.product.ProductId;
 
 /**
- * TODO: Complete Javadoc
+ * Interface scellée (sealed interface) définissant les différents types de requêtes de lecture (Query) supportées pour le registre de produits.
  */
 
 public sealed interface ProductQuery {

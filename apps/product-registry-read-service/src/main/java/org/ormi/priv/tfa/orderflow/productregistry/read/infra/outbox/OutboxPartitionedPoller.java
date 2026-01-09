@@ -33,7 +33,7 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Poller partitionné pour l'Outbox. Récupère périodiquement les événements non traités de la table Outbox et les soumet au dispatcher pour projection.
  */
 
 @ApplicationScoped

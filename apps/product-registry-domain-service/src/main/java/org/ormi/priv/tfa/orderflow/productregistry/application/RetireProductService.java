@@ -33,7 +33,7 @@ public class RetireProductService {
     OutboxRepository outbox;
 
     @Transactional
-    public void retire(RetireProductCommand cmd) throws IllegalArgumentException {
+    public void handle(RetireProductCommand cmd) throws IllegalArgumentException {
         Product product = repository.findById(cmd.productId())
                 .orElseThrow(() -> new IllegalArgumentException("Product not found"));
         EventEnvelope<ProductRetired> evt = product.retire();

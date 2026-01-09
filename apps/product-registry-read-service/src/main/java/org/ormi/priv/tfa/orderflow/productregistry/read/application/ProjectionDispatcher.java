@@ -18,7 +18,7 @@ import jakarta.resource.spi.IllegalStateException;
 import jakarta.transaction.Transactional;
 
 /**
- * TODO: Complete Javadoc
+ * Dispatcher chargé de recevoir les événements de produits et de les déléguer au projecteur pour mettre à jour la vue (Read Model).
  */
 
 @ApplicationScoped

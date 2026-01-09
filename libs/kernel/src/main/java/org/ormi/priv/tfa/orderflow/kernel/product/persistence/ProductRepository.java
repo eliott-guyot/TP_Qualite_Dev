@@ -7,7 +7,7 @@ import org.ormi.priv.tfa.orderflow.kernel.product.ProductId;
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuId;
 
 /**
- * TODO: Complete Javadoc
+ * Repository pour la persistance de l'agrégat Product (partie commande/écriture). Permet la sauvegarde et la récupération de l'état actuel des produits.
  */
 
 public interface ProductRepository {
