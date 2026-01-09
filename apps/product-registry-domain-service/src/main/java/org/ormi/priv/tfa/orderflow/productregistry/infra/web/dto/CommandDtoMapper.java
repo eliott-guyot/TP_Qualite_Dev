@@ -8,7 +8,8 @@ import org.ormi.priv.tfa.orderflow.contracts.productregistry.v1.write.RegisterPr
 import org.ormi.priv.tfa.orderflow.kernel.product.SkuIdMapper;
 
 /**
- * TODO: Complete Javadoc
+ * Mapper pour la conversion entre les DTOs de commande et les objets de domaine de commande.
+ * Permet de transformer les requêtes externes (DTO) en commandes internes et vice-versa.
  */
 
 @Mapper(
