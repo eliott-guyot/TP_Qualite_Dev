@@ -42,7 +42,7 @@ class UpdateProductServiceTest {
 
     @Test
     void shouldUpdateProductName() {
-        // Given
+        
         var productId = 1L;
         var newName = "Updated Name";
         var command = new ProductCommand.UpdateProductNameCommand(productId, newName);
@@ -55,10 +55,10 @@ class UpdateProductServiceTest {
         when(mockProduct.updateName(newName)).thenReturn(mockEvent);
         when(eventLogRepository.append(mockEvent)).thenReturn(mockEventLogEntity);
 
-        // When
+        
         updateProductService.handle(command);
 
-        // Then
+        
         verify(productRepository).save(mockProduct);
         verify(eventLogRepository).append(mockEvent);
         verify(outboxRepository).publish(any(OutboxEntity.class));
@@ -66,14 +66,13 @@ class UpdateProductServiceTest {
 
     @Test
     void shouldThrowExceptionWhenProductNotFoundForNameUpdate() {
-        // Given
+        
         var productId = 1L;
         var newName = "Updated Name";
         var command = new ProductCommand.UpdateProductNameCommand(productId, newName);
 
         when(productRepository.findById(productId)).thenReturn(Optional.empty());
 
-        // When & Then
         assertThrows(IllegalArgumentException.class, () -> updateProductService.handle(command));
         verify(productRepository, never()).save(any());
         verify(eventLogRepository, never()).append(any());
@@ -82,7 +81,7 @@ class UpdateProductServiceTest {
 
     @Test
     void shouldUpdateProductDescription() {
-        // Given
+        
         var productId = 1L;
         var newDescription = "Updated Description";
         var command = new ProductCommand.UpdateProductDescriptionCommand(productId, newDescription);
@@ -95,10 +94,10 @@ class UpdateProductServiceTest {
         when(mockProduct.updateDescription(newDescription)).thenReturn(mockEvent);
         when(eventLogRepository.append(mockEvent)).thenReturn(mockEventLogEntity);
 
-        // When
+        
         updateProductService.handle(command);
 
-        // Then
+        
         verify(productRepository).save(mockProduct);
         verify(eventLogRepository).append(mockEvent);
         verify(outboxRepository).publish(any(OutboxEntity.class));
@@ -106,14 +105,12 @@ class UpdateProductServiceTest {
 
     @Test
     void shouldThrowExceptionWhenProductNotFoundForDescriptionUpdate() {
-        // Given
         var productId = 1L;
         var newDescription = "Updated Description";
         var command = new ProductCommand.UpdateProductDescriptionCommand(productId, newDescription);
 
         when(productRepository.findById(productId)).thenReturn(Optional.empty());
 
-        // When & Then
         assertThrows(IllegalArgumentException.class, () -> updateProductService.handle(command));
         verify(productRepository, never()).save(any());
         verify(eventLogRepository, never()).append(any());
